@@ -44,7 +44,7 @@ object ElevatorLogic {
       val moveToKeep = {for {move <- current.moves if (next.moves.contains(move))}
         yield move}.take(1)
       val result = if (moveToKeep.nonEmpty) moveToKeep
-      else{List(next.moves.head)} //just take one
+      else{List(current.moves.head)} //just take one- need option here for npe
       result
     }
 
