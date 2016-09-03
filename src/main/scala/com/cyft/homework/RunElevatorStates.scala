@@ -55,7 +55,7 @@ object RunElevatorStates extends App{
   val path = logic.selectPath(pathStates, List(startingElevator)).mkString("")
 
   //printing path to stdout
-  println(path)
+  println(startingElevator + path)
 
 
 

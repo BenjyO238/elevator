@@ -16,16 +16,23 @@ object ElevatorLogic {
   case class PossibleMoves(moves:List[String])
 
   //check to see if same elevator is going to next floor
+  //pick that elevator or if none are continuing- any of next
+  //not optimal algorithm though
   def elevatorIsIn(first:List[String], next:List[String]) = {
     val result = {for {s <- first if (next.contains(s))}
       yield s}
+//    val result = continueResults match {
+//      case cr if cr.nonEmpty => cr
+//      case _ => first.take(1) //pick head of next floor moves if none continue
+//      }
+
     result
   }
 
-  //
+  //build list of possible moves at each step
   def buildStates(possible:Vector[List[String]], result: List[PossibleMoves]): List[PossibleMoves] = {
     val statesLeft = possible.size
-    //  val statesToCompare = possible.take(2).toVector
+
     if (statesLeft <= 1) result
     else {
       val statesToCompare = possible.take(2)
